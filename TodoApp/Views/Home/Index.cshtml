@@ -1,0 +1,18 @@
+﻿@model IEnumerable<TodoApp.Models.Todo>
+@{
+    ViewData["Title"] = "Your Todos";
+}
+
+<div class="container mt-5">
+    <h1 class="text-left mb-4">Todos List</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                @foreach(Todo todo in Model!)
+                {
+                   @(await Html.PartialAsync("_TodoItem", todo))
+                }
+            </div>
+        </div>
+    </div>
+</div>

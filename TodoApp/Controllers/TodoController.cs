@@ -28,7 +28,7 @@ namespace TodoApp.Controllers
             Todo todo = new Todo()
             {
                 Title = args.Title,
-                Description = args.Description,
+                Description = args.Description ?? string.Empty,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 IsDone = false,

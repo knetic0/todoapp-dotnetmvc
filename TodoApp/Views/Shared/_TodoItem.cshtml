@@ -22,6 +22,7 @@
             @if (!Model.IsDone)
             {
                 <form asp-action="MarkTodoIsDone" asp-controller="Home" method="post">
+                    @Html.AntiForgeryToken()
                     <input asp-for="@Model.Id" type="hidden" />
                     <button type="submit" class="btn btn-sm btn-outline-success">
                         Mark as done

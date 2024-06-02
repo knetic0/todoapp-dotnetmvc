@@ -17,6 +17,21 @@ namespace TodoApp.Controllers
         }
 
         [HttpGet]
+        public IActionResult UpdateTodo(int id)
+        {
+            Todo todo = _todoDal.Get(todo => todo.Id == id);
+            return View(todo);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTodo(Todo todo)
+        {
+            _todoDal.Update(todo);
+            todo.UpdatedDate = DateTime.Now;
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult AddTodo()
         { 
             return View();

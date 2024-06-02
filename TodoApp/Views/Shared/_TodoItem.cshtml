@@ -29,6 +29,13 @@
                     </button>
                 </form>
             }
+            <form asp-action="UpdateTodo" asp-controller="Todo" method="get">
+                @Html.AntiForgeryToken()
+                <input asp-for="@Model.Id" type="hidden" />
+                <button type="submit" class="btn btn-sm btn-outline-info">
+                    Update
+                </button>
+            </form>
             <form asp-action="DeleteTodo" asp-controller="Todo" method="post">
                 @Html.AntiForgeryToken()
                 <input asp-for="@Model.Id" type="hidden" />

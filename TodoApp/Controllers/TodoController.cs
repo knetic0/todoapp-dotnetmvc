@@ -33,25 +33,31 @@ namespace TodoApp.Controllers
 
         [HttpGet]
         public IActionResult AddTodo()
-        { 
+        {
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddTodo(AddTodoModel args)
         {
-            Todo todo = new Todo()
+            if(ModelState.IsValid)
             {
-                Title = args.Title,
-                Description = args.Description ?? string.Empty,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                IsDone = false,
-            };
+                Todo todo = new Todo()
+                {
+                    Title = args.Title,
+                    Description = args.Description ?? string.Empty,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    IsDone = false,
+                };
 
-            _todoDal.Add(todo);
+                _todoDal.Add(todo);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View(args);
         }
 
         [HttpPost]

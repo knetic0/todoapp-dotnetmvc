@@ -7,10 +7,11 @@
         <div class="form-group">
             <label for="title" class="mb-1">Title</label>
             <input type="text" asp-for="@Model.Title" class="form-control" id="title" placeholder="Enter title...">
+            <span asp-validation-for="@Model.Title" class="text-danger"></span>
         </div>
         <div class="form-group mt-3">
-            <label for="desc" class="mb-1">Todo's description</label>
-            <textarea placeholder="Enter description..." asp-for="@Model.Description" class="form-control" id="desc" rows="3"></textarea>
+            <label for="description" class="mb-1">Todo's description</label>
+            <textarea placeholder="Enter description..." asp-for="@Model.Description" class="form-control" id="description" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-primary mt-4">Add</button>
     </form>

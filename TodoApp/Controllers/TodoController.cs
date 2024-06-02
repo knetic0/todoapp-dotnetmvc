@@ -41,7 +41,8 @@ namespace TodoApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddTodo(AddTodoModel args)
         {
-            if(ModelState.IsValid)
+            bool isValid = ModelState.Values.Any(e => e.Errors.Count == 0);
+            if(isValid)
             {
                 Todo todo = new Todo()
                 {

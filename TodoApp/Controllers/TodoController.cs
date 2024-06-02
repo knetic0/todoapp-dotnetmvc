@@ -38,5 +38,23 @@ namespace TodoApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult MarkTodoIsDone(int id)
+        {
+            Todo todo = _todoDal.Get(todo => todo.Id == id);
+            todo.IsDone = true;
+            todo.UpdatedDate = DateTime.Now;
+            _todoDal.Update(todo);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTodo(int id)
+        {
+            Todo todo = _todoDal.Get(todo => todo.Id == id);
+            _todoDal.Delete(todo);
+            return RedirectToAction("Index");
+        }
     }
 }
